@@ -19,10 +19,13 @@ export class SearchComponent {
   searchCity(): void {
     if (this.searchTerm) {
       this.weatherService.getWeather(this.searchTerm).subscribe(data => {
-        const cityName = this.searchTerm; // Capturar el nombre de la ciudad
-        const cityWeather = data; // Capturar datos del clima
-        this.citySearched.emit({ cityName, cityWeather }); // Emitir los datos
+        const cityWeather = {
+          cityName: this.searchTerm, // Asigna el nombre de la ciudad
+          cityWeather: data, // Incluye los datos del clima
+        };
+        this.citySearched.emit(cityWeather); // Emitir los datos en el formato correcto
       });
     }
   }
+  
 }

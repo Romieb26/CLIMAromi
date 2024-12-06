@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
   private apiUrl = 'https://api.tomorrow.io/v4/weather/forecast';
-  private apiKey = 'KpWctRZFnq5Sx9fCxJxfwt6Eflg5PxB8';
+  private apiKey = 'hr8LToOvfovWcr71yX2pxAYuu2D5dgf3';
 
   constructor(private http: HttpClient) {}
 

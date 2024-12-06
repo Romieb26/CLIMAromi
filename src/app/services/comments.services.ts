@@ -10,22 +10,22 @@ export class CommentsService {
 
   constructor(private http: HttpClient) {}
 
-  // Obtener los comentarios para una ciudad
+  // Obtener comentarios por ciudad
   getComments(cityId: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?cityId=${cityId}`);
   }
 
-  // Agregar un comentario a una ciudad
+  // Agregar un nuevo comentario
   addComment(cityId: string, comment: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { cityId, comment });
   }
 
-  // Actualizar un comentario
+  // Actualizar un comentario existente
   updateComment(commentId: string, comment: string): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${commentId}`, { comment });
   }
 
-  // Eliminar un comentario
+  // Eliminar un comentario (marcar como eliminado)
   deleteComment(commentId: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${commentId}`);
   }

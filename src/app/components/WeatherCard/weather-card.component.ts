@@ -19,12 +19,18 @@ export class WeatherCardComponent {
   get temperature() {
     return this.cityWeather?.timelines?.daily[0]?.values?.temperatureAvg;
   }
-
+  
   get weatherDescription() {
     return this.cityWeather?.timelines?.daily[0]?.values?.weatherCode;
   }
+  
 
   toggleCommentsSection(): void {
     this.showCommentsSection = !this.showCommentsSection;
+  }
+
+  handleCommentAdded(): void {
+    // Mantener la sección de comentarios abierta después de agregar un comentario
+    this.showCommentsSection = true;
   }
 }

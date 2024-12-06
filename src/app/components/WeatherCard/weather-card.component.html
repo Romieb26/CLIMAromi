@@ -1,8 +1,13 @@
-<div class="weather-card" (click)="toggleCommentsSection()">
-  <h3>{{ cityName }}</h3>
+<div class="weather-card">
+  <!-- Información del clima -->
+  <h3 (click)="toggleCommentsSection()">{{ cityName }}</h3>
   <p *ngIf="temperature">Temperature: {{ temperature }}°C</p>
   <p *ngIf="weatherDescription">Condition: {{ weatherDescription }}</p>
 
-  <!-- Mostrar sección de comentarios si showCommentsSection es verdadero -->
-  <app-comment-section *ngIf="showCommentsSection" [cityId]="cityId"></app-comment-section>
+  <!-- Mostrar sección de comentarios -->
+  <app-comment-section
+    *ngIf="showCommentsSection"
+    [cityId]="cityId"
+    (commentAdded)="handleCommentAdded()">
+  </app-comment-section>
 </div>

@@ -1,17 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommentsService } from '../../services/comments.services';
-import { FormsModule } from '@angular/forms';  // Importa FormsModule en lugar de NgModel
+import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [FormsModule,NgIf,NgFor],  // Agrega FormsModule aquí
+  imports: [FormsModule, NgIf, NgFor],
   selector: 'app-comment-section',
   templateUrl: './comment-section.component.html',
   styleUrls: ['./comment-section.component.css'],
 })
 export class CommentSectionComponent implements OnInit {
-  @Input() cityId: string = ''; // Recibe el ID de la ciudad
+  @Input() cityId: string = '';
+  @Output() commentAdded = new EventEmitter<void>(); // Evento para comunicar al padre
+
   comments: any[] = [];
   newComment: string = '';
   isEditing: boolean = false;
@@ -37,6 +39,7 @@ export class CommentSectionComponent implements OnInit {
       this.commentsService.addComment(this.cityId, this.newComment).subscribe(() => {
         this.newComment = '';
         this.loadComments();
+        this.commentAdded.emit(); // Emitir evento hacia el componente padre
       });
     }
   }

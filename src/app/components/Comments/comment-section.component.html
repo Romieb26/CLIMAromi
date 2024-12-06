@@ -1,15 +1,18 @@
 <div class="comment-section">
+  <!-- Agregar un nuevo comentario -->
   <div *ngIf="!isEditing">
     <textarea [(ngModel)]="newComment" placeholder="Add a comment..."></textarea>
     <button (click)="addComment()">Add Comment</button>
   </div>
 
+  <!-- Editar un comentario existente -->
   <div *ngIf="isEditing">
     <textarea [(ngModel)]="editingCommentText"></textarea>
     <button (click)="updateComment()">Update Comment</button>
     <button (click)="cancelEdit()">Cancel</button>
   </div>
 
+  <!-- Lista de comentarios -->
   <div *ngFor="let comment of comments">
     <p>{{ comment.text }}</p>
     <button (click)="editComment(comment.id, comment.text)">Edit</button>

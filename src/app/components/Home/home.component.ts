@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit {
   }
 
   onCitySearch(cityWeather: any): void {
-    this.searchedCityWeather = { cityName: 'Searched City', data: cityWeather };
-  }
+    this.searchedCityWeather = {
+      cityName: cityWeather.cityName, // Asegúrate de que 'cityName' sea pasado correctamente
+      data: cityWeather.cityWeather, // Usa el formato esperado por WeatherCardComponent
+    };
+  }  
 }
