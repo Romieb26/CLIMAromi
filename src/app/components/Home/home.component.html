@@ -1,0 +1,21 @@
+<div class="home-container">
+  <!-- Search Component -->
+  <app-search (citySearched)="onCitySearch($event)"></app-search>
+
+  <!-- Weather Cards -->
+  <div class="weather-cards">
+    <!-- Card for each preloaded city -->
+    <app-weather-card
+      *ngFor="let city of preloadedCitiesWeather"
+      [cityWeather]="city.data"
+      [cityName]="city.cityName"
+    ></app-weather-card>
+
+    <!-- Card for searched city -->
+    <app-weather-card
+      *ngIf="searchedCityWeather"
+      [cityWeather]="searchedCityWeather.data"
+      [cityName]="searchedCityWeather.cityName"
+    ></app-weather-card>
+  </div>
+</div>
